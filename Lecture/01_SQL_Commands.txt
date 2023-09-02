@@ -1,0 +1,57 @@
+01.  CREATE DATABASE IF NOT EXISTS database_name; - cretae data base
+
+02.  DROP DATABASE IF EXISTS database_name; - delete database
+
+03.  USE database_name;  - create table in perticuler database
+
+04.  CREATE TABLE table_name(
+    column_name1 datatype constraint,
+    column_name2 datatype constraint,
+    column_name3 datatype constraint,
+); - create table
+
+05. INSERT INTO table_name 
+    VALUES
+    (101,"tony",19),
+    (102,"steve",20);  - insert data in table
+
+
+06. SELECT * FROM table_name; - see data
+
+07. SHOW DATABASES; show all data bases
+
+08. USE database_name;
+    SHOW TABLES; - show all tables
+
+
+    // Table Queries--------------
+
+
+01. CREATE TABLE table_name(
+    column_name1 datatype constraint,
+    column_name2 datatype constraint,
+    column_name3 datatype constraint,
+    ); - create table
+
+
+  Constraints -
+   NOT NULL - columns cannot have a null values 
+
+   UNIQUE - all values in columns are different 
+
+   DEFAULT - sets the default values of a columns
+
+   CHECK - it can limit the values allowed in a column
+
+   PRIMARY KEY - makes a column unique & not null but used only for one
+   CRETE TABLE temp(
+    id int not null,
+    PRIMARY KEY (id)
+   )
+
+   FOREIGN KEY prevent actions that would destroy links between tables 
+   CREATE TABLE temp (
+    cust_id int,
+    FOREIGN KEY (cust_id) REFERENCES customer(id)
+   )
+    
