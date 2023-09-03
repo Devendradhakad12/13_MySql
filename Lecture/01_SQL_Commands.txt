@@ -55,3 +55,38 @@
     FOREIGN KEY (cust_id) REFERENCES customer(id)
    )
     
+
+02. INSERT INTO table_name (column1,column2)
+        VALUES 
+        (col1_v1,col2_v1), 
+        (col1_v2,col2_v12), 
+
+
+03. SELECT col1,col2 FROM table_name;     - show selected table data    
+    SELECT * FROM table_name;             - show all table data 
+    SELECT DISTINCT col FROM table_name;  - show unique table data
+
+
+ ---------------- Example👇 ---------------
+
+    CREATE DATABASE IF NOT EXISTS collage;
+
+    use collage;
+
+create table class(
+id int primary key,
+student int
+);
+
+create table subclass (
+sub_id int primary key,
+chapter varchar(30),
+foreign key (sub_id) references class(id)
+);
+
+INSERT INTO class (id,student)
+        VALUES 
+        (1,20), 
+        (2,30); 
+
+select id,student from class;
