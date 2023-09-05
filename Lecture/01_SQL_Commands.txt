@@ -1,33 +1,33 @@
-01.  CREATE DATABASE IF NOT EXISTS database_name; - cretae data base
+1️⃣  CREATE DATABASE IF NOT EXISTS database_name; - cretae data base
 
-02.  DROP DATABASE IF EXISTS database_name; - delete database
+2️⃣  DROP DATABASE IF EXISTS database_name; - delete database
 
-03.  USE database_name;  - create table in perticuler database
+3️⃣  USE database_name;  - create table in perticuler database
 
-04.  CREATE TABLE table_name(
+4️⃣  CREATE TABLE table_name(
     column_name1 datatype constraint,
     column_name2 datatype constraint,
     column_name3 datatype constraint,
 ); - create table
 
-05. INSERT INTO table_name 
+5️⃣ INSERT INTO table_name 
     VALUES
     (101,"tony",19),
     (102,"steve",20);  - insert data in table
 
 
-06. SELECT * FROM table_name; - see data
+6️⃣ SELECT * FROM table_name; - see data
 
-07. SHOW DATABASES; show all data bases
+7️⃣ SHOW DATABASES; show all data bases
 
-08. USE database_name;
+8️⃣ USE database_name;
     SHOW TABLES; - show all tables
 
 
-    // Table Queries--------------
+-------------🚀 Table Queries 🚀--------------
 
 
-01. CREATE TABLE table_name(
+1️⃣ CREATE TABLE table_name(
     column_name1 datatype constraint,
     column_name2 datatype constraint,
     column_name3 datatype constraint,
@@ -56,37 +56,94 @@
    )
     
 
-02. INSERT INTO table_name (column1,column2)
+2️⃣ INSERT INTO table_name (column1,column2)
         VALUES 
         (col1_v1,col2_v1), 
         (col1_v2,col2_v12), 
 
 
-03. SELECT col1,col2 FROM table_name;     - show selected table data    
+3️⃣ SELECT col1,col2 FROM table_name;     - show selected table data    
     SELECT * FROM table_name;             - show all table data 
     SELECT DISTINCT col FROM table_name;  - show unique table data
+
+4️⃣ where Clause - to define conditions
+    SELECT col1,col2 FROM table_name
+    WHERE conditions1 AND conditon2;
+
+    - operators: AND - to check for both conditions to be true
+                 OR  - to check for one of the conditions to be true
+                 IN  - matches any value in the list
+                 NOT - to negate the given condition
+                 BETWEEN - selects for given range
+
+    SELECT  email,name  FROM user
+    WHERE  email IN ("dev@gmail.com","muku@gmail.com");   
+
+    SELECT  age,name  FROM user
+    WHERE  age NOT IN (15, 18);   
+
+5️⃣ LIMIT Clause
+     SELECT name,age,email 
+     FROM user
+     LIMIT 2;   
+
+
+6️⃣ Order by Clause - to sort in ascending (ASC) or descending order (DESC)
+
+    SELECT name ,age , followers
+    FROM user
+    ORDER BY followers ASC;
+
+
+7️⃣ Aggregate Function - Aggregate function perform a calculation on a set of values, and return a single value.
+
+    🔸COUNT()
+    🔸MAX()
+    🔸MIN()
+    🔸SUM()
+    🔸AVG()
+
+    SELECT max(followers)
+    FROM user;
+
+    SELECT count(age)
+    FROM user
+    WHERE age = 14;
+     
+
+   
+     
+
+    
 
 
  ---------------- Example👇 ---------------
 
-    CREATE DATABASE IF NOT EXISTS collage;
+   👉 CREATE DATABASE IF NOT EXISTS collage;
 
-    use collage;
+   👉 use collage;
 
-create table class(
-id int primary key,
-student int
-);
+   👉 create table class(
+    id int primary key,
+    student int
+    );
 
-create table subclass (
-sub_id int primary key,
-chapter varchar(30),
-foreign key (sub_id) references class(id)
-);
+   👉 create table subclass (
+    sub_id int primary key,
+    chapter varchar(30),
+    foreign key (sub_id) references class(id)
+    );
 
-INSERT INTO class (id,student)
+   👉 INSERT INTO class (id,student)
         VALUES 
         (1,20), 
         (2,30); 
 
-select id,student from class;
+   👉 SELECT id,student FROM class;
+
+   👉 SELECT * FROM class
+      WHERE student>20;
+
+
+
+ 
