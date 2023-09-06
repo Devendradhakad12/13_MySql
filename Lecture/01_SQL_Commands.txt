@@ -153,7 +153,7 @@
     🔸MIN()
     🔸SUM()
     🔸AVG()
-
+ 
    Exp: SELECT max(followers)
         FROM user;
 
