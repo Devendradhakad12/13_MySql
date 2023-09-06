@@ -85,7 +85,7 @@
 
 6️⃣  ALTER - to change the schema
  
-        🔸ADD COLUMN column_name 
+           🔸ADD COLUMN column_name 
         🔸DROP COLUMN column_name
         🔸RENAME TO table_name
         🔸CHANGE COLUMN old_name new_name new_datatype new_constraint;
