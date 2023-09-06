@@ -24,8 +24,10 @@
     SHOW TABLES; - show all tables
 
 
+
 -------------🚀 Table Queries 🚀--------------
 
+0️⃣  USE database_name; 
 
 1️⃣ CREATE TABLE table_name(
     column_name1 datatype constraint,
@@ -35,13 +37,13 @@
 
 
   Constraints -
-   NOT NULL - columns cannot have a null values 
+   🔸NOT NULL - columns cannot have a null values 
 
-   UNIQUE - all values in columns are different 
+   🔸UNIQUE - all values in columns are different 
 
-   DEFAULT - sets the default values of a columns
+   🔸DEFAULT - sets the default values of a columns
 
-   CHECK - it can limit the values allowed in a column
+   🔸CHECK - it can limit the values allowed in a column
 
    PRIMARY KEY - makes a column unique & not null but used only for one
    CRETE TABLE temp(
@@ -62,40 +64,89 @@
         (col1_v2,col2_v12), 
 
 
-3️⃣ SELECT col1,col2 FROM table_name;     - show selected table data    
+3️⃣  SELECT col1,col2 FROM table_name;     - show selected table data    
     SELECT * FROM table_name;             - show all table data 
     SELECT DISTINCT col FROM table_name;  - show unique table data
 
-4️⃣ where Clause - to define conditions
+
+4️⃣  UPDATE - to update existing rows
+     
+     Exp:  SET SQL_SAFE_UPDATES = 0;
+           UPDATE user
+           SET followers = 600
+           WHERE age = 16;
+
+
+5️⃣  DELETE - to delete existing rows
+     
+     Exp: DELETE FROM user
+          WHERE age = 14;  
+
+
+6️⃣  ALTER - to change the schema
+ 
+        🔸ADD COLUMN column_name 
+        🔸DROP COLUMN column_name
+        🔸RENAME TO table_name
+        🔸CHANGE COLUMN old_name new_name new_datatype new_constraint;
+        🔸MODIFY col_name new_datatype new_constraint;
+
+      Exp: ALTER TABLE user
+           ADD COLUMN city VARCHAR(25) DEFAULT "Delhi";
+
+      Exp: ALTER TABLE user
+           DROP COLUMN age;
+
+      Exp: ALTER TABLE user
+           RENAME TO instaUser;
+
+      Exp: ALTER TABLE instaUser
+           CHANGE COLUMN followers subscribe INT DEFAULT 0;
+
+      Exp: ALTER TABLE instaUser
+           MODIFY subscribe INT DEFAULT 5;
+
+
+
+7️⃣ TRUNCATE TABLE - to delete table's data
+
+      Exp: TRUNCATE TABLE instaUser
+
+
+
+---------------🚀 Clause 🚀----------------------
+
+1️⃣ WHERE Clause - to define conditions
     SELECT col1,col2 FROM table_name
     WHERE conditions1 AND conditon2;
 
-    - operators: AND - to check for both conditions to be true
-                 OR  - to check for one of the conditions to be true
-                 IN  - matches any value in the list
-                 NOT - to negate the given condition
-                 BETWEEN - selects for given range
+    - operators:🔸AND - to check for both conditions to be true
+                🔸OR  - to check for one of the conditions to be true
+                🔸IN  - matches any value in the list
+                🔸NOT - to negate the given condition
+                🔸BETWEEN - selects for given range
 
-    SELECT  email,name  FROM user
-    WHERE  email IN ("dev@gmail.com","muku@gmail.com");   
+   Exp: SELECT  email,name  FROM user
+        WHERE  email IN ("dev@gmail.com","muku@gmail.com");   
 
-    SELECT  age,name  FROM user
-    WHERE  age NOT IN (15, 18);   
+   Exp: SELECT  age,name  FROM user
+        WHERE  age NOT IN (15, 18);   
 
-5️⃣ LIMIT Clause
-     SELECT name,age,email 
-     FROM user
-     LIMIT 2;   
-
-
-6️⃣ Order by Clause - to sort in ascending (ASC) or descending order (DESC)
-
-    SELECT name ,age , followers
-    FROM user
-    ORDER BY followers ASC;
+2️⃣ LIMIT Clause
+    
+    Exp:  SELECT name,age,email 
+          FROM user
+          LIMIT 2;   
 
 
-7️⃣ Aggregate Function - Aggregate function perform a calculation on a set of values, and return a single value.
+3️⃣ Order by Clause - to sort in ascending (ASC) or descending order (DESC)
+
+   Exp:  SELECT name ,age , followers
+         FROM user
+         ORDER BY followers ASC;
+
+
+4️⃣ Aggregate Function - Aggregate function perform a calculation on a set of values, and return a single value.
 
     🔸COUNT()
     🔸MAX()
@@ -103,18 +154,45 @@
     🔸SUM()
     🔸AVG()
 
-    SELECT max(followers)
-    FROM user;
+   Exp: SELECT max(followers)
+        FROM user;
 
-    SELECT count(age)
-    FROM user
-    WHERE age = 14;
+   Exp: SELECT count(age)
+        FROM user
+        WHERE age = 14;
      
 
-   
-     
+5️⃣ Group by Clause - Group rows that have the same values into summary rows.
+                     It collects data from multiple records and groups that the result by one or more columns 
+                   * Generally we use group by with some aggregation function *
 
-    
+        Exp: SELECT count(id)
+             FROM user
+             GROUP BY age;
+
+        Exp: SELECT age, max(followers)
+             FROM user
+             GROUP BY age; 
+
+
+6️⃣ Having Clause - Similar to where i.e applies some condition on rows.
+                   But is used when we want to apply any condition after grouping.
+                   * WHERE is for the table, HAVING is for a group
+                   * Grouping is necessary for HAVING
+
+            Exp: SELECT age, max(followers)
+                 FROM user
+                 GROUP BY age
+                 HAVING max(followers)>200;            
+
+7️⃣ General Order 
+              
+              🔸SELECT column(s)
+              🔸FROM table_name
+              🔸WHERE condition
+              🔸GROUP BY column(s)
+              🔸HAVING condition
+              🔸ORDER BY column(s)ASC;
 
 
  ---------------- Example👇 ---------------
