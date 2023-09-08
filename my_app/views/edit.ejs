@@ -4,13 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Username</title>
+    <style>
+        div{
+          margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }form{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            gap: 20px;
+        }
+        textarea, input{
+            padding: 20px;
+        }
+        button{
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 0;
+        }
+    </style>
 </head>
 <body>
+ <div>
     <h2>Edit User </h2>
     <form method="post" action="/user/<%= user.id %>?_method=PATCH">
         <textarea name="username" id="username" cols="30" rows="1"> <%= user.username %> </textarea>
         <input type="password" name="password" placeholder="Enter Password">
         <button>Edit</button>
     </form>
+ </div>
 </body>
 </html>

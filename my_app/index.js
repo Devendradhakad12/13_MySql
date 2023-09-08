@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
   user: "root",
   database: "delta_app",
   password: "@dev0101",
-});
+}); 
 
 //  route get users count from database
 app.get("/", (req, res) => {
@@ -103,8 +103,6 @@ app.get("/new", (req, res) => {
   res.render("new.ejs");
 });
 
-//  add new user
-// auto id generate
 function autoId() {
   const char = "qwertyuiopasdfghjklzxcvbnm";
   const num = "1234567-890123456789-0123456";
@@ -130,5 +128,5 @@ app.post("/users/new", (req, res) => {
 
 // connect to server
 app.listen(PORT, () => {
-  console.log(`app listining on http://localhost:${PORT}`);
+  console.log(`app listning on http://localhost:${PORT}`);
 });

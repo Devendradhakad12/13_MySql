@@ -5,42 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Users</title>
     <style>
+        div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        }
         table ,th,tr,td{
-            border:  1px solid;
+            border:  2px solid;
             border-collapse: collapse;
             padding: 15px;
         }
         form{
             margin: 20px;
             display: flex;
-            float: right;
+          justify-content: center;
+          align-items: center;
             
+        }button{
+            padding: 10px 15px;
+            background: transparent;
+            border-radius: 5px;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }.newbtn{
+            background-color: cadetblue;
+            font-size: 24px;
         }
+        .editbtn{
+            background-color: rgba(0, 42, 255, 0.711); 
+        }
+        .deletebtn{
+            background-color: rgba(255, 0, 0, 0.71); 
+         
+        }
+
     </style>
 </head>
 <body>
+ <div>
     <form method="get" action="/new">
-<button>New</button>
-    </form>
-    <table >
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Email</th>
-        </tr>
-    <% for(let user of result){ %>
-        <tr>
-            <td><%= user.id %></td>
-            <td><%= user.username %></td>
-            <td><%= user.email %></td>
-           <td> <form method="GET" action="/user/<%= user.id %>/edit">
-            <button>Edit Username</button>
-        </form></td>
-           <td> <form method="GET" action="/user/<%= user.id %>/delete">
-            <button>Delete</button>
-        </form></td>
-          </tr>
-        <% }%>
-    </table>
+        <button class="newbtn">New</button>
+            </form>
+            <table >
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                </tr>
+            <% for(let user of result){ %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                   <td> <form method="GET" action="/user/<%= user.id %>/edit">
+                    <button class="editbtn">Edit</button>
+                </form></td>
+                   <td> <form method="GET" action="/user/<%= user.id %>/delete">
+                    <button class="deletebtn">Delete</button>
+                </form></td>
+                  </tr>
+                <% }%>
+            </table>
+ </div>
 </body>
 </html>

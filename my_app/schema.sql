@@ -2,7 +2,7 @@
 USE delta_app;
 
 SELECT * FROM user;
-
+ 
 SELECT COUNT(*) FROM user;
 
 SELECT * FROM user WHERE id="fcd05f1e-8352-4215-911b-a759991992d9"
