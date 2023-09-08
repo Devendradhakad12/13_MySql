@@ -19,7 +19,6 @@ const connection = mysql.createConnection({
 });
 
 //  route get users count from database
-
 app.get("/", (req, res) => {
   let q = `SELECT COUNT(*) FROM user`;
   try {
@@ -77,12 +76,55 @@ app.patch("/user/:id", (req, res) => {
         let q2 = `UPDATE user SET username='${newusername}' WHERE id="${id}"`;
         connection.query(q2, (err, result) => {
           if (err) throw err;
-          res.redirect("/users"); 
+          res.redirect("/users");
         });
       }
     });
   } catch (error) {
     res.send("some error in Database");
+  }
+});
+
+//  route Delte user
+app.get("/user/:id/delete", (req, res) => {
+  let id = req.params.id;
+  let q = `DELETE FROM user WHERE id='${id}'`;
+  try {
+    connection.query(q, (err, result) => {
+      res.redirect("/users");
+    });
+  } catch (error) {
+    res.send("some error in Database");
+  }
+});
+
+//  add new user
+app.get("/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+//  add new user
+// auto id generate
+function autoId() {
+  const char = "qwertyuiopasdfghjklzxcvbnm";
+  const num = "1234567-890123456789-0123456";
+  let id = "";
+  for (let i = 0; i < 18; i++) {
+    let math = Math.floor(Math.random() * 25);
+    id += char[math] + num[math];
+  }
+  return id.slice(0, 35);
+}
+app.post("/users/new", (req, res) => {
+  const id = autoId();
+  const { username, email, password } = req.body;
+  const q = `INSERT INTO user (id,username,email,password) VALUES ('${id}','${username}','${email}','${password}')`;
+  try {
+    connection.query(q, (result, err) => {
+      res.redirect("/users");
+    });
+  } catch (error) {
+    res.status(400).send({ success: false, message: "something went wrong" });
   }
 });
 

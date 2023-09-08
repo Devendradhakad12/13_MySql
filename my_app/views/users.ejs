@@ -10,14 +10,23 @@
             border-collapse: collapse;
             padding: 15px;
         }
+        form{
+            margin: 20px;
+            display: flex;
+            float: right;
+            
+        }
     </style>
 </head>
 <body>
+    <form method="get" action="/new">
+<button>New</button>
+    </form>
     <table >
         <tr>
           <th>ID</th>
-          <th>Email</th>
           <th>Username</th>
+          <th>Email</th>
         </tr>
     <% for(let user of result){ %>
         <tr>
@@ -26,6 +35,9 @@
             <td><%= user.email %></td>
            <td> <form method="GET" action="/user/<%= user.id %>/edit">
             <button>Edit Username</button>
+        </form></td>
+           <td> <form method="GET" action="/user/<%= user.id %>/delete">
+            <button>Delete</button>
         </form></td>
           </tr>
         <% }%>
